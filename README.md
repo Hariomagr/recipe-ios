@@ -5,6 +5,8 @@ The goal of this project is to **get started with iOS development**, learn key *
 
 This project will serve as a **learning journey**, while producing a real, production-ready app.
 
+Design inspiration: https://www.figma.com/community/file/1117253657372214910
+
 ---
 
 ## ✅ Features & Roadmap
