@@ -8,15 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var path: [NavigationPath] = []
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack(path: $path) {
+            SplashView(path: $path)
+                .navigationBarBackButtonHidden()
+                .navigationDestination(for: NavigationPath.self) {
+                    navigationpath in
+                    switch(navigationpath) {
+                    case .Splash:
+                        SplashView(path: $path)
+                            .navigationBarBackButtonHidden()
+                    case .Login:
+                        LoginView(path: $path)
+                            .navigationBarBackButtonHidden()
+                    case .Register:
+                        RegisterView()
+                            .navigationBarBackButtonHidden()
+                    }
+                }
         }
-        .padding()
     }
+    
 }
 
 #Preview {
