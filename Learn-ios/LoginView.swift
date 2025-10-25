@@ -50,24 +50,12 @@ struct LoginView: View {
             .padding(.top, 32)
             .frame(maxWidth: .infinity, alignment: .center)
             
-            Button(action: {}) {
-                Image("google")
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .padding(.all, 20)
-            }
-            .overlay {
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.white, lineWidth: 1)
-                    .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
-            }
-            .frame(maxWidth: .infinity, alignment: .center)
-            .padding(.top, 16)
+            GoogleButton()
             
             HStack(alignment: .center, spacing: 4) {
                 Text("Don’t have an account?")
                 Button("Sign up"){
-                    
+                    path.append(.Register)
                 }
                 .foregroundColor(colors.accent)
             }

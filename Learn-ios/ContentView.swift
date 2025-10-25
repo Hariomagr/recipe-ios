@@ -25,7 +25,7 @@ struct ContentView: View {
                         LoginView(path: $path)
                             .navigationBarBackButtonHidden()
                     case .Register:
-                        RegisterView()
+                        RegisterView(path: $path)
                             .navigationBarBackButtonHidden()
                     }
                 }
