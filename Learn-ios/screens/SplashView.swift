@@ -42,7 +42,7 @@ struct SplashView: View {
                     .font(.system(size: 20))
                     .multilineTextAlignment(.center)
                 Spacer().frame(height: 64)
-                CtaButton(isFullWidth: false, onClick: startCooking, label: "Start cooking")
+                CtaButton(isFullWidth: false, onClick: startCooking, label: "Start cooking", hasIcon: true)
                 Spacer().frame(height: 72)
             }
             .padding(.horizontal, 24)

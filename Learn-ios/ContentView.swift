@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack(path: $path) {
-            SplashView(path: $path)
+            HomeScreen(path: $path)
                 .navigationBarBackButtonHidden()
                 .navigationDestination(for: NavigationPath.self) {
                     navigationpath in

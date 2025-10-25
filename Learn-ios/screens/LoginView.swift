@@ -38,7 +38,7 @@ struct LoginView: View {
             .padding(.top, 8)
             
             Spacer().frame(height: 32)
-            CtaButton(isFullWidth: true, onClick: login, label: "Sign In")
+            CtaButton(isFullWidth: true, onClick: login, label: "Sign In", hasIcon: true)
             
             HStack(alignment: .center) {
                 Spacer().frame(width: 80, height: 1).background(colors.neutral)

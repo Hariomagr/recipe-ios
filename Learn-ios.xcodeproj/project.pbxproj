@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		183B3E272EACCEAF00861068 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 183B3E262EACCEAF00861068 /* BottomSheet */; };
+		183B3E2D2EACDFFF00861068 /* SwiftUIFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 183B3E2C2EACDFFF00861068 /* SwiftUIFlowLayout */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		188C0F6E2EA4F90300C644E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183B3E272EACCEAF00861068 /* BottomSheet in Frameworks */,
+				183B3E2D2EACDFFF00861068 /* SwiftUIFlowLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = "Learn-ios";
 			packageProductDependencies = (
+				183B3E262EACCEAF00861068 /* BottomSheet */,
+				183B3E2C2EACDFFF00861068 /* SwiftUIFlowLayout */,
 			);
 			productName = "Learn-ios";
 			productReference = 188C0F5F2EA4F90100C644E8 /* Learn-ios.app */;
@@ -195,6 +204,10 @@
 			);
 			mainGroup = 188C0F562EA4F90100C644E8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				183B3E252EACCEAF00861068 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				183B3E2B2EACDFFF00861068 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 188C0F602EA4F90100C644E8 /* Products */;
 			projectDirPath = "";
@@ -583,6 +596,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		183B3E252EACCEAF00861068 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lucaszischka/BottomSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.1;
+			};
+		};
+		183B3E2B2EACDFFF00861068 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-flow-layout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		183B3E262EACCEAF00861068 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 183B3E252EACCEAF00861068 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
+		183B3E2C2EACDFFF00861068 /* SwiftUIFlowLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 183B3E2B2EACDFFF00861068 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */;
+			productName = SwiftUIFlowLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 188C0F572EA4F90100C644E8 /* Project object */;
 }

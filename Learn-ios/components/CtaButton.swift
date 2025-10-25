@@ -11,6 +11,7 @@ struct CtaButton: View {
     let isFullWidth: Bool
     let onClick: () -> Void
     let label: String
+    let hasIcon: Bool
     var body: some View {
         HStack {
             Button(action: onClick) {
@@ -20,8 +21,8 @@ struct CtaButton: View {
                         .fontWeight(.bold)
                               .foregroundColor(.white)
                               
-                    Image(systemName: "arrow.right")
-                        .tint(Color.white)
+                    hasIcon ? Image(systemName: "arrow.right")
+                        .tint(Color.white) : nil
                     isFullWidth ? Spacer() : nil
                 }
             }

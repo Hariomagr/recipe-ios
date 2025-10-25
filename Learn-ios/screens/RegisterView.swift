@@ -50,7 +50,7 @@ struct RegisterView: View {
                 
                 CustomCheckbox(isChecked: $isChecked, label: "Accept terms and conditions")
                 
-                CtaButton(isFullWidth: true, onClick: {}, label: "Sign up")
+                CtaButton(isFullWidth: true, onClick: {}, label: "Sign up", hasIcon: true)
                     .padding(.top, 16)
                 
                 HStack(alignment: .center) {
