@@ -10,34 +10,58 @@ import BottomSheet
 import SwiftUIFlowLayout
 
 struct HomeTab: View {
+    @StateObject var homeScreenViewModel = HomeScreenViewModel()
+
     @State var bottomSheetPosition: BottomSheetPosition = .hidden
-    @State private var selectedTab: String = "All"
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    private let items = [1, 2, 3, 4, 5, 6, 7]
     
     @State private var selectedFilters: [String: String] = [:]
+    
+    private func fetch() {
+        Task {
+            await homeScreenViewModel.fetchData()
+        }
+    }
+    
+    var recipeCards: [RecipeCard] {
+        (homeScreenViewModel.recipes ?? []).enumerated().map { index, recipe in
+            RecipeCard(recipe: recipe, index: index)
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
             Header(bottomSheetPosition: $bottomSheetPosition)
-            RecipeTypeTabs(selectedTab: $selectedTab)
-
+            RecipeTypeTabs(selectedTab: $homeScreenViewModel.category)
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 24) {
-                    
-                    ForEach(items.indices, id: \.self) {
-                        index in
-                        RecipeCard(index: index)
+                if homeScreenViewModel.recipes == nil && homeScreenViewModel.isLoading {
+                    ProgressView()
+                } else {
+                    LazyVGrid(columns: columns, spacing: 24) {
+                        ForEach(recipeCards.indices, id: \.self) {
+                            index in
+                            recipeCards[index]
+                                .onAppear {
+                                    if index == recipeCards.count - 1 && homeScreenViewModel.hasMore {
+                                        fetch()
+                                    }
+                                }
+                        }
+                    }
+                    if (homeScreenViewModel.isLoading) {
+                        ProgressView()
                     }
                 }
+                Spacer()
             }
             .scrollIndicators(.hidden)
             .padding(.top, 24)
-            
-            Spacer()
+            .refreshable {
+                fetch()
+            }
         }
         .opacity(bottomSheetPosition == .hidden ? 1 : 0.4)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -63,6 +87,9 @@ struct HomeTab: View {
         .showDragIndicator(true)
         .enableTapToDismiss()
         .enableSwipeToDismiss()
+        .onAppear {
+            fetch()
+        }
     }
 }
 
@@ -81,7 +108,6 @@ struct ModalFilters: View {
     ]
     
     var body: some View {
-        
         VStack {
             ForEach(filterData, id: \.label) { data in
                 ModalTab(

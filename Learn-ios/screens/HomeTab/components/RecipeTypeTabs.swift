@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeTypeTabs: View {
-    private let tabs = ["All", "Indian", "Chinese", "Italian", "American", "Asian"]
+    private let tabs = ["All", "Indian", "Pakistani", "Italian", "Brazilian", "Asian"]
     @Binding var selectedTab: String
     func onTabSelected(tab: String) {
         selectedTab = tab

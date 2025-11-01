@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct RecipeCard: View {
+    var recipe: Recipe
     var index: Int
-    private let image = "https://images.unsplash.com/photo-1602881917445-0b1ba001addf?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1480"
     
-    @State private var isPressed: Bool = false
+    @StateObject var favoriteManager = FavoritesManager()
+    
+    var isFavorite: Bool {
+        favoriteManager.isFavorite(id: recipe.id)
+    }
     
     func handleButtonPress() {
-        isPressed.toggle()
+        favoriteManager.toggleFavorite(id: recipe.id)
     }
     
     var body: some View {
         ZStack(alignment: .top) {
 
-            AsyncImage(url: URL(string: image)) {
+            AsyncImage(url: URL(string: recipe.image)) {
                 phase in
                 switch phase {
                 case .success(let image):
@@ -38,14 +42,14 @@ struct RecipeCard: View {
             .zIndex(1)
             
             VStack(alignment: .center) {
-                Text("Classic Greek Salad")
+                Text(recipe.name)
                     .multilineTextAlignment(.center)
                 Spacer()
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Time")
                             .font(.caption)
-                        Text("15 Mins")
+                        Text("\(recipe.prepTimeMinutes) Mins")
                             .font(.caption)
                     }
                     Spacer()
@@ -58,7 +62,7 @@ struct RecipeCard: View {
                                     .foregroundColor(.white)
                                     .frame(width: 24, height: 24)
                             }
-                            .foregroundColor(isPressed ? colors.primary : colors.gray3)
+                            .foregroundColor(isFavorite ? colors.primary : colors.gray3)
                     }
                     
                 }
