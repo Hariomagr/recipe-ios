@@ -41,9 +41,8 @@ struct HomeTab: View {
                     ProgressView()
                 } else {
                     LazyVGrid(columns: columns, spacing: 24) {
-                        ForEach(recipeCards.indices, id: \.self) {
-                            index in
-                            recipeCards[index]
+                        ForEach(Array(recipeCards.enumerated()), id: \.element.recipe.id) { index, card in
+                            card
                                 .onAppear {
                                     if index == recipeCards.count - 1 && homeScreenViewModel.hasMore {
                                         fetch()
