@@ -11,6 +11,7 @@ enum NavigationPath: String {
     case Splash = "Splash"
     case Login = "Login"
     case Register = "Register"
+    case HomeScreen = "HomeScren"
 }
 
 struct colors {

@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack(path: $path) {
-            HomeScreen(path: $path)
+            SplashView(path: $path)
                 .navigationBarBackButtonHidden()
                 .navigationDestination(for: NavigationPath.self) {
                     navigationpath in
@@ -26,6 +26,9 @@ struct ContentView: View {
                             .navigationBarBackButtonHidden()
                     case .Register:
                         RegisterView(path: $path)
+                            .navigationBarBackButtonHidden()
+                    case .HomeScreen:
+                        HomeScreen(path: $path)
                             .navigationBarBackButtonHidden()
                     }
                 }

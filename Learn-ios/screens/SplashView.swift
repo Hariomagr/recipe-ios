@@ -12,10 +12,6 @@ struct SplashView: View {
     
     @Binding var path: [NavigationPath]
     
-    func startCooking () {
-        path.append(.Login)
-    }
-    
     var body: some View {
         ZStack {
             AsyncImage(url: URL(string: splashUrl)) {
@@ -42,10 +38,18 @@ struct SplashView: View {
                     .font(.system(size: 20))
                     .multilineTextAlignment(.center)
                 Spacer().frame(height: 64)
-                CtaButton(isFullWidth: false, onClick: startCooking, label: "Start cooking", hasIcon: true)
-                Spacer().frame(height: 72)
             }
             .padding(.horizontal, 24)
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400), execute: {
+                if (isLoggedIn()) {
+                    path = [.HomeScreen]
+                } else {
+                    path = [.Login]
+                }
+            })
+            
         }
         
     }

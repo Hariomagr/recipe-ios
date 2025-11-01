@@ -13,8 +13,31 @@ struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
+    @State private var isLoading: Bool = false
+    
+    var isDisabled: Bool {
+        return email.isEmpty || password.isEmpty
+    }
+    
+    private func onSignInSuccess() {
+        path = [.HomeScreen]
+    }
+    
     func login() {
-        
+        Task {
+            do {
+                isLoading = true
+                try await signInUserWithEmail(email: email, password: password)
+                onSignInSuccess()
+            }
+            catch {
+                isLoading = false
+                showAlert = true
+                alertMessage = error.localizedDescription
+            }
+        }
     }
     
     var body: some View {
@@ -31,14 +54,9 @@ struct LoginView: View {
             CustomTextField(label: "Email", placeholder: "Enter email", value: $email)
             CustomTextField(label: "Password", placeholder: "Enter password", value: $password)
             
-            Button("Forgot Password?") {
-                
-            }
-            .foregroundColor(colors.accent)
-            .padding(.top, 8)
-            
             Spacer().frame(height: 32)
-            CtaButton(isFullWidth: true, onClick: login, label: "Sign In", hasIcon: true)
+            CtaButton(isFullWidth: true, onClick: login, label: "Sign In", hasIcon: true, isLoading: isLoading)
+                .disabled(isDisabled)
             
             HStack(alignment: .center) {
                 Spacer().frame(width: 80, height: 1).background(colors.neutral)
@@ -50,7 +68,7 @@ struct LoginView: View {
             .padding(.top, 32)
             .frame(maxWidth: .infinity, alignment: .center)
             
-            GoogleButton()
+            GoogleButton(onSuccess: onSignInSuccess)
             
             HStack(alignment: .center, spacing: 4) {
                 Text("Don’t have an account?")
@@ -68,6 +86,9 @@ struct LoginView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 24)
-        
+        .alert("Error occurred", isPresented: $showAlert) {
+        } message: {
+            Text(alertMessage)
+        }
     }
 }

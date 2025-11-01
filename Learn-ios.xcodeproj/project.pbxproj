@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		183B3E272EACCEAF00861068 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 183B3E262EACCEAF00861068 /* BottomSheet */; };
 		183B3E2D2EACDFFF00861068 /* SwiftUIFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 183B3E2C2EACDFFF00861068 /* SwiftUIFlowLayout */; };
+		18B8325D2EB63DEC0095EB79 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 18B8325C2EB63DEC0095EB79 /* FirebaseAuth */; };
+		18B8325F2EB63DEC0095EB79 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 18B8325E2EB63DEC0095EB79 /* FirebaseDatabase */; };
+		18B832612EB63DEC0095EB79 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 18B832602EB63DEC0095EB79 /* FirebaseFirestore */; };
+		18B832632EB63DEC0095EB79 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 18B832622EB63DEC0095EB79 /* FirebaseInAppMessaging-Beta */; };
+		18B832652EB63DEC0095EB79 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 18B832642EB63DEC0095EB79 /* FirebaseStorage */; };
+		18B832702EB651E50095EB79 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 18B8326F2EB651E50095EB79 /* GoogleSignIn */; };
+		18B832722EB651E50095EB79 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18B832712EB651E50095EB79 /* GoogleSignInSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +41,22 @@
 		188C0F772EA4F90300C644E8 /* Learn-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Learn-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		18B832742EB651FE0095EB79 /* Exceptions for "Learn-ios" folder in "Learn-ios" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 188C0F5E2EA4F90100C644E8 /* Learn-ios */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		188C0F612EA4F90100C644E8 /* Learn-ios */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				18B832742EB651FE0095EB79 /* Exceptions for "Learn-ios" folder in "Learn-ios" target */,
+			);
 			path = "Learn-ios";
 			sourceTree = "<group>";
 		};
@@ -57,8 +77,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B832722EB651E50095EB79 /* GoogleSignInSwift in Frameworks */,
 				183B3E272EACCEAF00861068 /* BottomSheet in Frameworks */,
+				18B832702EB651E50095EB79 /* GoogleSignIn in Frameworks */,
+				18B8325D2EB63DEC0095EB79 /* FirebaseAuth in Frameworks */,
+				18B8325F2EB63DEC0095EB79 /* FirebaseDatabase in Frameworks */,
+				18B832612EB63DEC0095EB79 /* FirebaseFirestore in Frameworks */,
+				18B832652EB63DEC0095EB79 /* FirebaseStorage in Frameworks */,
 				183B3E2D2EACDFFF00861068 /* SwiftUIFlowLayout in Frameworks */,
+				18B832632EB63DEC0095EB79 /* FirebaseInAppMessaging-Beta in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +148,13 @@
 			packageProductDependencies = (
 				183B3E262EACCEAF00861068 /* BottomSheet */,
 				183B3E2C2EACDFFF00861068 /* SwiftUIFlowLayout */,
+				18B8325C2EB63DEC0095EB79 /* FirebaseAuth */,
+				18B8325E2EB63DEC0095EB79 /* FirebaseDatabase */,
+				18B832602EB63DEC0095EB79 /* FirebaseFirestore */,
+				18B832622EB63DEC0095EB79 /* FirebaseInAppMessaging-Beta */,
+				18B832642EB63DEC0095EB79 /* FirebaseStorage */,
+				18B8326F2EB651E50095EB79 /* GoogleSignIn */,
+				18B832712EB651E50095EB79 /* GoogleSignInSwift */,
 			);
 			productName = "Learn-ios";
 			productReference = 188C0F5F2EA4F90100C644E8 /* Learn-ios.app */;
@@ -207,6 +241,8 @@
 			packageReferences = (
 				183B3E252EACCEAF00861068 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 				183B3E2B2EACDFFF00861068 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */,
+				18B8325B2EB63DEC0095EB79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				18B8326E2EB651E50095EB79 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 188C0F602EA4F90100C644E8 /* Products */;
@@ -406,6 +442,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Learn-ios/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -443,6 +480,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Learn-ios/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -614,6 +652,22 @@
 				minimumVersion = 1.0.5;
 			};
 		};
+		18B8325B2EB63DEC0095EB79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.5.0;
+			};
+		};
+		18B8326E2EB651E50095EB79 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -626,6 +680,41 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 183B3E2B2EACDFFF00861068 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */;
 			productName = SwiftUIFlowLayout;
+		};
+		18B8325C2EB63DEC0095EB79 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B8325B2EB63DEC0095EB79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		18B8325E2EB63DEC0095EB79 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B8325B2EB63DEC0095EB79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		18B832602EB63DEC0095EB79 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B8325B2EB63DEC0095EB79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		18B832622EB63DEC0095EB79 /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B8325B2EB63DEC0095EB79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		18B832642EB63DEC0095EB79 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B8325B2EB63DEC0095EB79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		18B8326F2EB651E50095EB79 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B8326E2EB651E50095EB79 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		18B832712EB651E50095EB79 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B8326E2EB651E50095EB79 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

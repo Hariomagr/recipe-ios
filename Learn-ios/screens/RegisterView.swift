@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
 
 struct RegisterView: View {
     @Binding var path: [NavigationPath]
@@ -14,6 +16,32 @@ struct RegisterView: View {
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var isChecked: Bool = false
+    @State private var isLoading: Bool = false
+    
+    @State private var showAlert: Bool = false
+    @State private var errorDescription: String? = ""
+    
+    var isSignupDisabled: Bool {
+        return !isChecked || name.isEmpty || email.isEmpty || password.isEmpty || password != confirmPassword
+    }
+    
+    func createUser() {
+        Task {
+            isLoading = true
+            do {
+                try await registerUser(email: email, password: password, name: name)
+                isLoading = false
+            } catch {
+                errorDescription = error.localizedDescription
+                showAlert = true
+                isLoading = false
+            }
+        }
+    }
+    
+    private func onSignInSuccess() {
+        path = [.HomeScreen]
+    }
     
     var body: some View {
         ScrollView {
@@ -50,8 +78,9 @@ struct RegisterView: View {
                 
                 CustomCheckbox(isChecked: $isChecked, label: "Accept terms and conditions")
                 
-                CtaButton(isFullWidth: true, onClick: {}, label: "Sign up", hasIcon: true)
+                CtaButton(isFullWidth: true, onClick: createUser, label: "Sign up", hasIcon: true, isLoading: isLoading)
                     .padding(.top, 16)
+                    .disabled(isSignupDisabled)
                 
                 HStack(alignment: .center) {
                     Spacer().frame(width: 80, height: 1).background(colors.neutral)
@@ -61,7 +90,7 @@ struct RegisterView: View {
                     Spacer().frame(width: 80, height: 1).background(colors.neutral)
                 }.padding()
                 
-                GoogleButton()
+                GoogleButton(onSuccess: onSignInSuccess)
                 
                 HStack(alignment: .center, spacing: 4) {
                     Text("Already a member?")
@@ -80,5 +109,9 @@ struct RegisterView: View {
             Spacer()
         }
         .scrollIndicators(.hidden)
+        .alert("Error Occurred", isPresented: $showAlert) {
+        } message: {
+            Text(errorDescription ?? "")
+        }
     }
 }
