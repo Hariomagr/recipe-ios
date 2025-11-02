@@ -27,9 +27,13 @@ func application(_ app: UIApplication,
 @main
 struct Learn_iosApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var coreDataView = CoreStorageDataViewModel()
+    @StateObject private var favoriteManager = FavoritesManager()
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
+        .environmentObject(coreDataView)
+        .environmentObject(favoriteManager)
     }
 }

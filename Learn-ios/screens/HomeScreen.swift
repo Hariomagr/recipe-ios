@@ -26,7 +26,7 @@ struct HomeScreen: View {
                 .tabItem{
                     Label("Home", systemImage: "house")
                 }
-            SecondTab()
+            SavedTab()
                 .tabItem{
                     Label("Saved", systemImage: "heart")
                 }
@@ -39,11 +39,7 @@ struct HomeScreen: View {
     }
 }
 
-struct SecondTab: View {
-    var body: some View {
-        Text("Second Tab")
-    }
-}
+
 
 struct ThirdTab: View {
     var body: some View {

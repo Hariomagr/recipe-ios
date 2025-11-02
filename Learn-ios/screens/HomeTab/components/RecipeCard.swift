@@ -10,14 +10,19 @@ import SwiftUI
 struct RecipeCard: View {
     var recipe: Recipe
     var index: Int
-    
-    @StateObject var favoriteManager = FavoritesManager()
+    @EnvironmentObject var coreDataView: CoreStorageDataViewModel
+    @EnvironmentObject var favoriteManager: FavoritesManager
     
     var isFavorite: Bool {
         favoriteManager.isFavorite(id: recipe.id)
     }
     
     func handleButtonPress() {
+        if (isFavorite) {
+            coreDataView.deleteRecipe(recipe.id)
+        } else {
+            coreDataView.addRecipe(_recipe: recipe)
+        }
         favoriteManager.toggleFavorite(id: recipe.id)
     }
     
@@ -44,6 +49,7 @@ struct RecipeCard: View {
             VStack(alignment: .center) {
                 Text(recipe.name)
                     .multilineTextAlignment(.center)
+                Text(String(recipe.id))
                 Spacer()
                 HStack {
                     VStack(alignment: .leading) {
